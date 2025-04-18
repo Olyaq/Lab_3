@@ -17,9 +17,9 @@ class Student:
         return len(self.grades)
     
 student1 = Student('Екатерина', 'Данилова', 9)
-student1.grades = [4, 3, 4]
+student1.grades = [5, 2, 4]
 student2 = Student('Ольга', 'Калашникова', 9)
-student2.grades = [3, 5, 4]
+student2.grades = [3, 4, 5]
 print(student1)  
 print(student1 == student2)  
 print(len(student1))  
