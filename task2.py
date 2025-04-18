@@ -42,7 +42,7 @@ class Teacher(Person):
 student1 = Student('Данилова Екатерина', 18, '284')
 student2 = Student('Калашникова Ольга', 19, '999')
 
-teacher = Teacher('Светлана Ивановна', 45, 'Математика')
+teacher = Teacher('Наташа Петрова', 67, 'Русский')
 
 teacher.add_student(student1)
 teacher.add_student(student2)
