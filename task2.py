@@ -11,9 +11,9 @@ class Person:
 class Student(Person):
     # Конструктор класса Student
     def __init__(self, name, age, student_id):
-        # Вызываем конструктор родительского класса (Person) для name и age
+        # Вызываем конструктор класса (Person) для name и age
         super().__init__(name, age)
-        # Добавляем уникальный атрибут id (идентификатор студента)
+        # Добавляем уникальный id (идентификатор студента)
         self.id = student_id
     
     # Метод для строкового представления объекта (вызывается при print())
@@ -25,9 +25,9 @@ class Student(Person):
 class Teacher(Person):
     # Конструктор класса Teacher
     def __init__(self, name, age, subject):
-        # Вызываем конструктор родительского класса (Person)
+        # Вызываем конструктор класса (Person)
         super().__init__(name, age)
-        # Добавляем атрибут subject (предмет, который преподает учитель)
+        # Добавляем subject (предмет, который преподает учитель)
         self.subject = subject
         # Создаем пустой список students для хранения студентов преподавателя
         self.students = []
@@ -64,7 +64,6 @@ class Teacher(Person):
             print(student.name)
 
 # Пример использования классов
-# Создаем двух студентов
 student1 = Student('Данилова Екатерина', 18, '284')
 student2 = Student('Калашникова Ольга', 19, '999')
 
