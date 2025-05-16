@@ -7,11 +7,11 @@ class Student:
         self.student_id = student_id  # Сохраняем ID студента
         self.grades = []        # Создаём пустой список для оценок
 
-    # Метод для строкового представления объекта (вызывается при print())
+    # Метод для строкового представления (вызывается при print())
     def __str__(self):
         return f"Student(name='{self.name}', surname='{self.surname}', student_id={self.student_id}, grades={self.grades})"
     
-    # Метод для сравнения объектов (==)
+    # Метод для сравнения объектов 
     def __eq__(self, other):
         if isinstance(other, Student):  # Проверяем, что other - тоже Student
             return self.student_id == other.student_id  # Сравниваем по ID
@@ -29,9 +29,9 @@ student1.grades = [5, 2, 4]  # Устанавливаем оценки (обыч
 student2 = Student('Ольга', 'Калашникова', 9)
 student2.grades = [3, 4, 5]  # Устанавливаем оценки
 
-# Выводим информацию о первом студенте (вызывает __str__)
+# Выводим информацию о первом студенте 
 print(student1)  
-# Сравниваем студентов (вызывает __eq__)
+# Сравниваем студентов 
 print(student1 == student2)  
-# Получаем количество оценок первого студента (вызывает __len__)
+# Получаем количество оценок первого студента 
 print(len(student1))
