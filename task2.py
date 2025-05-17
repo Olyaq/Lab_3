@@ -53,7 +53,7 @@ class Teacher(Person):
             print(f"Студент {student.name} не найден")
     
     # Метод для отображения списка студентов
-    def show_students(self):
+    def show_students(self):  #показывает
         # Выводим заголовок с именем преподавателя
         print(f"\nСтуденты преподавателя {self.name}:")
         # Проверяем, есть ли студенты
