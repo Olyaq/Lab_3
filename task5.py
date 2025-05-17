@@ -11,7 +11,7 @@ class Student:
     def __str__(self):
         return f"Student(name='{self.name}', surname='{self.surname}', student_id={self.student_id}, grades={self.grades})"
     
-    # Метод для сравнения объектов 
+    # Метод для сравнения объектов, студентов
     def __eq__(self, other):
         if isinstance(other, Student):  # Проверяем, что other - тоже Student
             return self.student_id == other.student_id  # Сравниваем по ID
