@@ -40,7 +40,7 @@ class Circle(Shape):
     def __init__(self, r):
         self.r = r  # Сохраняем радиус
     
-    # Переопределяем метод area (площадь круга = pr²)
+    # Переопределяем метод area (площадь круга = pr^2)
     def area(self):
         return math.pi * self.r ** 2
     
