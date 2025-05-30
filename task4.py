@@ -26,12 +26,12 @@ class BankAccount:
 
 
 account = BankAccount(1000) #создаем банковский счет
-account.deposit(500) #пополнение
+account.deposit(250) #пополнение
 print(f'Баланс после пополнения: {account.balance}')
-account.withdraw(300) #снимаем средства
+account.withdraw(500) #снимаем средства
 print(f'Баланс после снятия: {account.balance}')
 try: #попытка снять больше, чем есть на счете
-    account.withdraw(1500)
+    account.withdraw(1100)
 except ValueError as e:
     print(f'Ошибка: {e}')
 
