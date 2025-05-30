@@ -1,48 +1,38 @@
-# Создаем класс Банковский счет
 class BankAccount:
-    # Конструктор класса с параметром баланс по умолчанию 0
-    def __init__(self, balance=0):
-        self.balance = balance  # Устанавливаем начальный баланс
-        self.history = []  # Создаем пустой список для хранения истории операций
+    def __init__(self, initial_balance=0): #создание счета и начальный баланс
+        self._balance = initial_balance
+        self._transactions = []  #список для хранения истории операций
     
-    # Метод для пополнения счета (принимает amount - сумму пополнения)
-    def add_money(self, amount):
-        if amount > 0:  # Проверяем, что сумма положительная
-            self.balance += amount  # Увеличиваем баланс
-            self.history.append(f"+{amount}")  # Добавляем запись в историю
-        else:
-            print("Ошибка: сумма должна быть больше 0")  # Сообщение об ошибке
+    def deposit(self, amount): #Пополнение счета на указанную сумму
+        if amount <= 0: #сумма, на котор. надо пополнить
+            raise ValueError('Сумма пополнения должна быть положительной')
+        self._balance += amount #кол-во 
+        self._transactions.append(f'Пополнение: +{amount}')
     
-    # Метод для снятия денег (принимает amount - сумму снятия)
-    def take_money(self, amount):
-        if amount > 0:  # Проверяем, что сумма положительная
-            if amount <= self.balance:  # Проверяем, достаточно ли средств
-                self.balance -= amount  # Уменьшаем баланс
-                self.history.append(f"-{amount}")  # Добавляем запись в историю
-            else:
-                print("Ошибка: недостаточно средств")  # Сообщение об ошибке
-        else:
-            print("Ошибка: сумма должна быть больше 0")  # Сообщение об ошибке
+    def withdraw(self, amount): #Снятие средств со счета (безопасное)
+        if amount <= 0: #кол-во денег 
+            raise ValueError('Сумма снятия должна быть положительной')
+        if amount > self._balance:
+            raise ValueError('Недостаточно средств')
+        self._balance -= amount
+        self._transactions.append(f'Снятие: -{amount}')
     
-    # Метод для показа истории операций
-    def show_history(self):
-        return self.history  # Возвращаем список истории
+    @property #обращение к балансу как к атрибуту
+    def balance(self): #Геттер для получения текущего баланса
+        return self._balance
+    
+    def get_transactions(self): #Метод для получения истории операций
+        return self._transactions.copy()
 
 
-# Создаем экземпляр класса BankAccount с начальным балансом 
-account = BankAccount(900)  
-# Пополняем счет 
-account.add_money(550)       
-# Выводим текущий баланс 
-print(f"Баланс: {account.balance}")
+account = BankAccount(1000) #создаем банковский счет
+account.deposit(500) #пополнение
+print(f'Баланс после пополнения: {account.balance}')
+account.withdraw(300) #снимаем средства
+print(f'Баланс после снятия: {account.balance}')
+try: #попытка снять больше, чем есть на счете
+    account.withdraw(1500)
+except ValueError as e:
+    print(f'Ошибка: {e}')
 
-# Снимаем со счета
-account.take_money(400)      
-# Выводим текущий баланс
-print(f"Баланс: {account.balance}")
-
-# Пытаемся снять больше, чем есть на счете 
-account.take_money(2000)    
-
-# Выводим историю операций
-print("История:", account.show_history())
+print('История операций:', account.get_transactions()) #вывод истории операций
